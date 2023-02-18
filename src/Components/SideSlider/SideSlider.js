@@ -1,20 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { useSideSliderStyles } from "./SideSliderStyles";
 
-function SideSlider() {
+function SideSlider(props) {
   const theme = useTheme();
   const styles = useSideSliderStyles(theme);
-  //prettier-ignore
-  const [sliderContent,] = useState(false);
 
   return (
     <div
-      className={`${styles.sliderContainer} ${
-        sliderContent && styles.openSlider
-      }`}
+      className={`${styles.sliderContainer} ${props.open && styles.openSlider}`}
     >
-      SideSlider
+      {props.content}
     </div>
   );
 }

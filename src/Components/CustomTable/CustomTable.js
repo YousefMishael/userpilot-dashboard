@@ -12,7 +12,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 
-function CustomTable() {
+function CustomTable(props) {
   const theme = useTheme();
   const styles = useCustomTableStyles();
 
@@ -27,6 +27,10 @@ function CustomTable() {
     createData("Cupcake", 305, 3.7, 67),
     createData("Gingerbread", 356, 16.0, 49),
   ];
+
+  function handleShowUser() {
+    props.showUser();
+  }
 
   return (
     <div className={styles.cTableContainer}>
@@ -50,6 +54,7 @@ function CustomTable() {
                     paddingInlineStart: "32px",
                   },
                 }}
+                onClick={handleShowUser}
               >
                 <TableCell>
                   <div className={styles.nameContainer}>

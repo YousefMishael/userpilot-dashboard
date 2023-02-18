@@ -13,6 +13,8 @@ export const theme = createTheme({
       white: "#ffffff",
       ticketsBorderCol: "#DFE0EB",
       tableHeadColor: "#9FA2B4",
+      sldrHeadBgClr: "#2050AD",
+      sldrDescClr: "#87888C",
     },
   },
   typography: {

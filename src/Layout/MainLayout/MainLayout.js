@@ -19,7 +19,7 @@ function MainLayout() {
       <div className={styles.container}>
         <SideBar />
         <Outlet />
-        <SideSlider />
+        <SideSlider open={sliderDetails.open} content={sliderDetails.content} />
       </div>
     </AppContext.Provider>
   );
