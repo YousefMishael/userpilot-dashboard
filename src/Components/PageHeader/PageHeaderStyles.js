@@ -5,8 +5,8 @@ export const usePageHeaderStyles = makeStyles((theme) => ({
     display: "flex",
     backgroud: theme.palette.primary.secondary,
     justifyContent: "space-between",
-    // width: "100%",
-    flex: 1,
+    width: "100%",
+    height: "81px",
   },
 
   title: {
@@ -55,6 +55,6 @@ export const usePageHeaderStyles = makeStyles((theme) => ({
   },
 
   avatar: {
-    zIndex: "-1",
+    zIndex: "0",
   },
 }));

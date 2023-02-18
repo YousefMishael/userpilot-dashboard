@@ -9,6 +9,7 @@ export const useSideBarStyles = makeStyles((theme) => ({
     top: "37px",
     left: "80%",
     background: "red",
+    zIndex: "1",
     //PC
     [theme.breakpoints.up("md")]: {
       display: "none !important", //override mui button styles
@@ -21,6 +22,7 @@ export const useSideBarStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     transform: "translateX(-100%)",
     transition: "300ms ease-in",
+    zIndex: "1",
 
     //PC
     [theme.breakpoints.up("md")]: {

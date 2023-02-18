@@ -7,7 +7,12 @@ export const theme = createTheme({
       sideTextColor: "#dde2ff",
       sideHover: "#363749",
       secondary: "#e5e5e5",
-      titleColor: "#252733",
+      backgroundColor: "#F7F8FC",
+      tableRowTitleColor: "#252733",
+      tableRowDescColor: "#C5C7CD",
+      white: "#ffffff",
+      ticketsBorderCol: "#DFE0EB",
+      tableHeadColor: "#9FA2B4",
     },
   },
   typography: {
