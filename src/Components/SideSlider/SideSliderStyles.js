@@ -7,5 +7,10 @@ export const useSideSliderStyles = makeStyles((theme) => ({
     border: "1px solid red",
     height: "100%",
     transform: "translateX(100%)",
+    transition: "300ms ease-in",
+  },
+
+  openSlider: {
+    transform: "translateX(0)",
   },
 }));
