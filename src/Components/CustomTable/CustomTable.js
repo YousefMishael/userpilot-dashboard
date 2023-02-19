@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useCustomTableStyles } from "./CustomTableStyles";
 import Table from "@mui/material/Table";
@@ -14,22 +14,35 @@ import Select from "@mui/material/Select";
 
 function CustomTable(props) {
   const theme = useTheme();
-  const styles = useCustomTableStyles();
+  const styles = useCustomTableStyles(theme);
+  const rowsNum = useRef(props.defaultRowsNum);
+  const currPage = useRef(0);
 
-  function createData(name, calories, fat, carbs) {
-    return { name, calories, fat, carbs };
+  function handleShowUser(user) {
+    props.showUser(user);
   }
 
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24),
-    createData("Ice cream sandwich", 237, 9.0, 37),
-    createData("Eclair", 262, 16.0, 24),
-    createData("Cupcake", 305, 3.7, 67),
-    createData("Gingerbread", 356, 16.0, 49),
-  ];
+  function onRowsChanged(e) {
+    if (e.target.value === rowsNum.current) return;
+    if ("getData" in props) {
+      props.getData(e.target.value, currPage.current);
+    }
+    rowsNum.current = parseInt(e.target.value);
+  }
 
-  function handleShowUser() {
-    props.showUser();
+  function onPageChanged(action) {
+    //dont do any action if the fetch function didn't passed
+    if (!("getData" in props)) return;
+
+    if (action === "next") {
+      props.getData(rowsNum.current, currPage.current + 1);
+      currPage.current += 1;
+    } else {
+      if (currPage.current > 0) {
+        props.getData(rowsNum.current, currPage.current - 1);
+        currPage.current -= 1;
+      }
+    }
   }
 
   return (
@@ -45,47 +58,58 @@ function CustomTable(props) {
             </TableRow>
           </TableHead>
           <TableBody className={styles.tbody}>
-            {rows.map((row) => (
+            {props.data.map((row, index) => (
               <TableRow
-                key={row.name}
+                key={index.toString()}
                 sx={{
                   "&:last-child td, &:last-child th": { border: 0 },
-                  "& .MuiTableCell-body:nth-child(1)": {
-                    paddingInlineStart: "32px",
-                  },
                 }}
-                onClick={handleShowUser}
+                onClick={handleShowUser.bind(null, row)}
               >
                 <TableCell>
                   <div className={styles.nameContainer}>
-                    <img
-                      src="https://www.freecodecamp.org/news/content/images/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg"
-                      alt="user"
-                    />
+                    <img src={row.picture.thumbnail} alt="user" />
                     <div className={styles.nameWrapper}>
-                      <span className={styles.rowTtitle}>Bessie Cooper</span>
-                      <span className={styles.rowDesc}>29/72 asdas</span>
+                      <span className={styles.rowTtitle}>
+                        {row.name.first} {row.name.last}
+                      </span>
+                      <span className={styles.rowDesc}>
+                        {row.location.street.name} {row.location.state},{" "}
+                        {row.location.city} {row.location.street.number}
+                      </span>
                     </div>
                   </div>
                 </TableCell>
                 <TableCell>
                   <div className={styles.contactContainer}>
+                    <span className={styles.rowTtitle}>{row.email}</span>
+                    <span className={styles.rowDesc}>{row.cell}</span>
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className={styles.contactContainer}>
                     <span className={styles.rowTtitle}>
-                      yousef.mishael1998@gmail.com
+                      {new Date(row.registered.date).toLocaleDateString(
+                        "en-us",
+                        { month: "long", day: "numeric", year: "numeric" }
+                      )}
                     </span>
-                    <span className={styles.rowDesc}>0592222889</span>
+                    <span className={styles.rowDesc}>
+                      {new Date(row.registered.date).toLocaleTimeString(
+                        "en-us",
+                        { hour: "numeric", minute: "numeric" }
+                      )}
+                    </span>
                   </div>
                 </TableCell>
                 <TableCell>
                   <div className={styles.contactContainer}>
-                    <span className={styles.rowTtitle}>May 25, 2019</span>
-                    <span className={styles.rowDesc}>6:30 PM</span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className={styles.contactContainer}>
-                    <span className={styles.rowTtitle}>Palestine</span>
-                    <span className={styles.rowDesc}>Jerusalem</span>
+                    <span className={styles.rowTtitle}>
+                      {row.location.country}
+                    </span>
+                    <span className={styles.rowDesc}>
+                      {row.location.postcode}
+                    </span>
                   </div>
                 </TableCell>
               </TableRow>
@@ -104,10 +128,8 @@ function CustomTable(props) {
             width: "65px",
             height: "18px",
           }}
-
-          // value={age}
-          // onChange={handleChange}
-          // input={<BootstrapInput />}
+          value={rowsNum.current}
+          onChange={onRowsChanged}
         >
           <MenuItem value={5}>5</MenuItem>
           <MenuItem value={6}>6</MenuItem>
@@ -117,10 +139,16 @@ function CustomTable(props) {
           <MenuItem value={10}>10</MenuItem>
         </Select>
         <span>
-          <ArrowBackIosIcon className={styles.arrow} />
+          <ArrowBackIosIcon
+            className={styles.arrow}
+            onClick={onPageChanged.bind(null, "back")}
+          />
         </span>
         <span>
-          <ArrowForwardIosIcon className={styles.arrow} />
+          <ArrowForwardIosIcon
+            className={styles.arrow}
+            onClick={onPageChanged.bind(null, "next")}
+          />
         </span>
       </div>
     </div>

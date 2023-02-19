@@ -39,8 +39,6 @@ export const useUserDetailSliderStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingLeft: "87px",
-    paddingRight: "86px",
   },
 
   avatar: {

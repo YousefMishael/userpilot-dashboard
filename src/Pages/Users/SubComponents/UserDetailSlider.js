@@ -4,7 +4,7 @@ import { useUserDetailSliderStyles } from "./UserDetailSliderStyles";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useAppContext } from "../../../Utils/Utils";
 
-function UserDetailSlider() {
+function UserDetailSlider({ user }) {
   const theme = useTheme();
   const styles = useUserDetailSliderStyles(theme);
   const context = useAppContext();
@@ -25,10 +25,15 @@ function UserDetailSlider() {
           <img
             className={styles.avatar}
             alt="Jones Ferdinand"
-            src="https://www.freecodecamp.org/news/content/images/2022/09/jonatan-pie-3l3RwQdHRHg-unsplash.jpg"
+            src={user?.picture?.medium}
           />
-          <div className={styles.name}>Name</div>
-          <p className={styles.desc}>Description</p>
+          <div className={styles.name}>
+            {user?.name?.first} {user?.name?.last}
+          </div>
+          <p className={styles.desc}>
+            {user?.location?.street?.name} {user?.location?.state},{" "}
+            {user?.location?.city} {user?.location?.street?.number}
+          </p>
         </div>
       </div>
     </div>

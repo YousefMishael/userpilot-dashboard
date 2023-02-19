@@ -6,6 +6,7 @@ export const useUsersStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     background: theme.palette.primary.backgroundColor,
+    marginBottom: "32px",
   },
 
   ticketsContainer: {
