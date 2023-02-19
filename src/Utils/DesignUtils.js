@@ -15,6 +15,8 @@ export const theme = createTheme({
       tableHeadColor: "#9FA2B4",
       sldrHeadBgClr: "#2050AD",
       sldrDescClr: "#87888C",
+      linkShadow: "rgba(221, 226, 255, 0.3)",
+      linkHoverShadow: "rgba(0, 0, 0, 0.3)",
     },
   },
   typography: {
