@@ -18,7 +18,7 @@ function CustomTable(props) {
   const rowsNum = useRef(props.defaultRowsNum);
   const currPage = useRef(0);
 
-  function onRowsChanged(e) {
+  function onRowNumsChanged(e) {
     if (e.target.value === rowsNum.current) return;
     if ("getData" in props) {
       props.getData(e.target.value, currPage.current);
@@ -29,7 +29,6 @@ function CustomTable(props) {
   function onPageChanged(action) {
     //dont do any action if the fetch function didn't passed
     if (!("getData" in props)) return;
-
     if (action === "next") {
       props.getData(rowsNum.current, currPage.current + 1);
       currPage.current += 1;
@@ -40,6 +39,8 @@ function CustomTable(props) {
       }
     }
   }
+
+  console.log("render");
 
   return (
     <div className={styles.cTableContainer}>
@@ -67,7 +68,7 @@ function CustomTable(props) {
             height: "18px",
           }}
           value={rowsNum.current}
-          onChange={onRowsChanged}
+          onChange={onRowNumsChanged}
         >
           <MenuItem value={5}>5</MenuItem>
           <MenuItem value={6}>6</MenuItem>

@@ -6,16 +6,17 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import Overview from "./Pages/Overview/Overview";
 import MainLayout from "./Layout/MainLayout/MainLayout";
-import Users from "./Pages/Users/Users";
 import Loading from "./Components/Loading/Loading";
 import { getUsers } from "./Pages/Users/Utils/Utils";
 import User from "./Pages/User/User";
 
-const Overview = lazy(() => import("./Pages/Overview/Overview"));
+// const Overview = lazy(() => import("./Pages/Overview/Overview"));
 const Ideas = lazy(() => import("./Pages/Ideas/Ideas"));
 const Tickets = lazy(() => import("./Pages/Tickets/Tickets"));
 const NotFound = lazy(() => import("./Pages/NotFound/NotFound"));
+const Users = lazy(() => import("./Pages/Users/Users"));
 
 async function getAllUsers() {
   return getUsers();
