@@ -9,10 +9,17 @@ import {
 import MainLayout from "./Layout/MainLayout/MainLayout";
 import Users from "./Pages/Users/Users";
 import Loading from "./Components/Loading/Loading";
+import { getUsers } from "./Pages/Users/Utils/Utils";
+import User from "./Pages/User/User";
+
 const Overview = lazy(() => import("./Pages/Overview/Overview"));
 const Ideas = lazy(() => import("./Pages/Ideas/Ideas"));
 const Tickets = lazy(() => import("./Pages/Tickets/Tickets"));
 const NotFound = lazy(() => import("./Pages/NotFound/NotFound"));
+
+async function getAllUsers() {
+  return getUsers();
+}
 
 function App() {
   const router = createBrowserRouter(
@@ -21,7 +28,9 @@ function App() {
         <Route path="/" element={<Overview />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/ideas" element={<Ideas />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/users" element={<Users />} loader={getAllUsers}>
+          <Route path=":userId" element={<User />} />
+        </Route>
       </Route>
     )
   );

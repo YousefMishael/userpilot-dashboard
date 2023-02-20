@@ -2,7 +2,7 @@ export const sideItems = [
   {
     id: "1819a8ce-ae0f-11ed-afa1-0242ac120002",
     title: "Overview",
-    isActive: true,
+    isActive: false,
     icon: "overview",
     to: "/",
   },

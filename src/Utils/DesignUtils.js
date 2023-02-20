@@ -21,5 +21,8 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: "Mulish",
+    sFontSize: "12px",
+    lFontSize: "18px",
+    xlFontSize: "24px",
   },
 });

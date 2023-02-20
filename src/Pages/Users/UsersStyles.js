@@ -28,7 +28,7 @@ export const useUsersStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "19px",
+    fontSize: theme.typography.lFontSize,
     lineHeight: "24px",
     marginTop: "32px",
     marginInlineStart: "32px",

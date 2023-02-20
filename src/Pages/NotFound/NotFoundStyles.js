@@ -24,7 +24,6 @@ export const useNotFoundStyles = makeStyles((theme) => ({
 
   link: {
     textDecoration: "none",
-    color: "inherit",
     display: "flex",
     alignItems: "center",
     color: theme.palette.primary.sideTextColor,

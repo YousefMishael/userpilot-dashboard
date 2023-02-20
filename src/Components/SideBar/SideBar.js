@@ -15,19 +15,21 @@ function SideBar() {
   const styles = useSideBarStyles(theme);
   const [items, setItems] = useState(sideItems);
   const [openMenu, setOpenMenu] = useState(false);
-  const path = useLocation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    //string.split(subString, index).join(subString).length: gets second / index
+
     let _items = items.map((item) => {
       const _item = { ...item };
-      _item.isActive = item.to === path.pathname;
+      _item.isActive = item.to === pathname;
       if (typeof item.icon === "string") _item.icon = getIcon(item.icon); //get icon component at initialization
       return _item;
     });
 
     setItems(_items);
-  }, [path.pathname]);
+  }, [pathname]);
 
   //this function added to add class name to icon
   function getIcon(icon) {

@@ -51,7 +51,7 @@ export const useUserDetailSliderStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "18px",
+    fontSize: theme.typography.lFontSize,
     lineHeight: "20px",
     marginTop: "22px",
     /* identical to box height, or 111% */
@@ -68,7 +68,7 @@ export const useUserDetailSliderStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "14px",
+    fontSize: theme.typography.fontSize,
     lineHeight: "16px",
     /* identical to box height, or 114% */
 

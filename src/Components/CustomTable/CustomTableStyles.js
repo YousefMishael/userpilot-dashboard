@@ -11,7 +11,7 @@ export const useCustomTableStyles = makeStyles((theme) => ({
       fontFamily: theme.typography.fontFamily,
       fontStyle: "normal",
       fontWeight: "700",
-      fontSize: "14px",
+      fontSize: theme.typography.fontSize,
       lineHeight: "18px",
       /* identical to box height */
 
@@ -55,7 +55,7 @@ export const useCustomTableStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "600",
-    fontSize: "14px",
+    fontSize: theme.typography.fontSize,
     lineHeight: "20px",
     /* identical to box height, or 143% */
 
@@ -70,7 +70,7 @@ export const useCustomTableStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontstyle: "normal",
     fontWeight: "400",
-    fontSize: "12px",
+    fontSize: theme.typography.sFontSize,
     lineHeight: "16px",
     /* identical to box height, or 133% */
 
@@ -98,7 +98,7 @@ export const useCustomTableStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "400",
-    fontSize: "14px",
+    fontSize: theme.typography.fontSize,
     lineHeight: "20px",
     /* or 143% */
 

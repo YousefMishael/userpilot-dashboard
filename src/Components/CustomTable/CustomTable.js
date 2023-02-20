@@ -18,7 +18,8 @@ function CustomTable(props) {
   const rowsNum = useRef(props.defaultRowsNum);
   const currPage = useRef(0);
 
-  function handleShowUser(user) {
+  function handleShowUser(user, e) {
+    e.preventDefault();
     props.showUser(user);
   }
 
@@ -51,10 +52,9 @@ function CustomTable(props) {
         <Table>
           <TableHead>
             <TableRow className={styles.tableHeader}>
-              <TableCell>User</TableCell>
-              <TableCell>Contact Information</TableCell>
-              <TableCell>Registration Date</TableCell>
-              <TableCell>Country/Post Code</TableCell>
+              {props.headers.map((cell, idx) => (
+                <TableCell key={idx.toString()}>{cell}</TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody className={styles.tbody}>
@@ -154,5 +154,12 @@ function CustomTable(props) {
     </div>
   );
 }
+
+CustomTable.defaultProps = {
+  headers: [],
+  data: [],
+  getData: () => {},
+  showUser: () => {},
+};
 
 export default React.memo(CustomTable);

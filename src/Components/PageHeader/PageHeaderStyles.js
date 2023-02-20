@@ -14,7 +14,7 @@ export const usePageHeaderStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "700",
-    fontSize: "24px",
+    fontSize: theme.typography.xlFontSize,
     lineHeight: "30px",
     letterSpacing: "0.3px",
     marginInlineStart: "30px",
@@ -42,7 +42,7 @@ export const usePageHeaderStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     fontStyle: "normal",
     fontWeight: "600",
-    fontSize: "14px",
+    fontSize: theme.typography.fontSize,
     lineHeight: "20px",
     /* or 143% */
 
