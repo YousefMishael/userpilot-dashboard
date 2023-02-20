@@ -19,11 +19,15 @@ function SideBar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //string.split(subString, index).join(subString).length: gets second / index
-
     let _items = items.map((item) => {
       const _item = { ...item };
-      _item.isActive = item.to === pathname;
+      if (pathname.lastIndexOf("/") > 0 && item.to.length > 1) {
+        _item.isActive =
+          item.to ===
+          pathname.substring(pathname.indexOf(item.to), item.to.length);
+      } else {
+        _item.isActive = item.to === pathname;
+      }
       if (typeof item.icon === "string") _item.icon = getIcon(item.icon); //get icon component at initialization
       return _item;
     });

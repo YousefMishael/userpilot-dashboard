@@ -84,7 +84,6 @@ function Users() {
                 freeSolo
                 id="free-solo-2-demo"
                 options={genders}
-                // disableClearable
                 style={{ zIndex: 0, width: "197.12px" }}
                 size={"small"}
                 value={gender}
@@ -95,9 +94,6 @@ function Users() {
                     size={"small"}
                     label="Gender"
                     variant="outlined"
-                    // value={gender}
-                    // onChange={handelFilter.bind(null, "gender")}
-                    // style={{ zIndex: 0 }}
                   />
                 )}
               />
@@ -106,10 +102,8 @@ function Users() {
                 freeSolo
                 id="free-solo-2-demo"
                 options={nationalities}
-                // disableClearable
                 style={{ zIndex: 0, width: "197.12px" }}
                 size={"small"}
-                // value={nationality.name}
                 getOptionLabel={(option) => option?.name || ""}
                 renderOption={(props, option) => (
                   <li {...props} key={option?.code}>
@@ -123,9 +117,6 @@ function Users() {
                     size={"small"}
                     label="Nationality"
                     variant="outlined"
-                    // value={gender}
-                    // onChange={handelFilter.bind(null, "gender")}
-                    // style={{ zIndex: 0 }}
                   />
                 )}
               />
