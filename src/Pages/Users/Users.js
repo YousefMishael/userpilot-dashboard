@@ -14,6 +14,7 @@ import {
 } from "./Utils/Utils";
 import { useDebounce } from "../../Utils/Utils";
 import { useNavigate } from "react-router-dom";
+import TableCells from "./SubComponents/TabelCells";
 
 function Users() {
   const theme = useTheme();
@@ -128,10 +129,9 @@ function Users() {
             </div>
           </div>
           <CustomTable
-            showUser={handleShowUserDetails}
             defaultRowsNum={DEFAULT_TABLE_ROWS_NUM}
             getData={getAllUsers}
-            data={users}
+            data={<TableCells data={users} showUser={handleShowUserDetails} />}
             headers={[
               "Users",
               "Contact Information",

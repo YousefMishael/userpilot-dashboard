@@ -18,11 +18,6 @@ function CustomTable(props) {
   const rowsNum = useRef(props.defaultRowsNum);
   const currPage = useRef(0);
 
-  function handleShowUser(user, e) {
-    e.preventDefault();
-    props.showUser(user);
-  }
-
   function onRowsChanged(e) {
     if (e.target.value === rowsNum.current) return;
     if ("getData" in props) {
@@ -57,64 +52,7 @@ function CustomTable(props) {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody className={styles.tbody}>
-            {props.data.map((row, index) => (
-              <TableRow
-                key={index.toString()}
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                }}
-                onClick={handleShowUser.bind(null, row)}
-              >
-                <TableCell>
-                  <div className={styles.nameContainer}>
-                    <img src={row.picture.thumbnail} alt="user" />
-                    <div className={styles.nameWrapper}>
-                      <span className={styles.rowTtitle}>
-                        {row.name.first} {row.name.last}
-                      </span>
-                      <span className={styles.rowDesc}>
-                        {row.location.street.name} {row.location.state},{" "}
-                        {row.location.city} {row.location.street.number}
-                      </span>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className={styles.contactContainer}>
-                    <span className={styles.rowTtitle}>{row.email}</span>
-                    <span className={styles.rowDesc}>{row.cell}</span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className={styles.contactContainer}>
-                    <span className={styles.rowTtitle}>
-                      {new Date(row.registered.date).toLocaleDateString(
-                        "en-us",
-                        { month: "long", day: "numeric", year: "numeric" }
-                      )}
-                    </span>
-                    <span className={styles.rowDesc}>
-                      {new Date(row.registered.date).toLocaleTimeString(
-                        "en-us",
-                        { hour: "numeric", minute: "numeric" }
-                      )}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div className={styles.contactContainer}>
-                    <span className={styles.rowTtitle}>
-                      {row.location.country}
-                    </span>
-                    <span className={styles.rowDesc}>
-                      {row.location.postcode}
-                    </span>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          <TableBody className={styles.tbody}>{props.data}</TableBody>
         </Table>
       </TableContainer>
       <div className={styles.tableActionsCon}>
