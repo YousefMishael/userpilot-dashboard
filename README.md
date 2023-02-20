@@ -34,6 +34,6 @@ It takes 4 props: defaultRowsNum, headers, data, getData
 - The Slider component added to MainLayout file to make access to it possible from any component inside this project
 - We use React context to control this component.
 - This component takes two props (which will be passed using context to MainLayout state and to this component using props):
-  >. Open: to decide which action needed showing or hiding
-  >. Content: it a customized component as requested (this is the slider body).
+  - Open: to decide which action needed showing or hiding
+  - Content: it a customized component as requested (this is the slider body).
 - Slider body is a separated component to make showing slider body dynamic as requested from any location of this project
