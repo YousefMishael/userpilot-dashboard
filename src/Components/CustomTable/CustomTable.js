@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useCustomTableStyles } from "./CustomTableStyles";
 import Table from "@mui/material/Table";

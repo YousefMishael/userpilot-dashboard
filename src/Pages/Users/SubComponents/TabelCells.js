@@ -13,8 +13,6 @@ function TableCells(props) {
     props.showUser(user);
   }
 
-  console.log("1");
-
   return props.data.map((item, idx) => (
     <TableRow
       key={idx.toString()}

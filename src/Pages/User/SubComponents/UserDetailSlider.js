@@ -3,13 +3,16 @@ import { useTheme } from "@mui/material/styles";
 import { useUserDetailSliderStyles } from "./UserDetailSliderStyles";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useAppContext } from "../../../Utils/Utils";
+import { useNavigate } from "react-router-dom";
 
 function UserDetailSlider({ user }) {
   const theme = useTheme();
   const styles = useUserDetailSliderStyles(theme);
   const context = useAppContext();
+  const navigate = useNavigate();
 
   function closeSlide() {
+    navigate("/users");
     context.setSliderDetails({
       ...context.sliderDetails,
       open: false,

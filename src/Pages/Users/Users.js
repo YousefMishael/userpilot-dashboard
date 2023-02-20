@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useUsersStyles } from "./UsersStyles";
 import PageHeader from "../../Components/PageHeader/PageHeader";
@@ -27,6 +27,7 @@ function Users() {
     name: "",
   });
   const navigate = useNavigate();
+  const firstRender = useRef(true);
 
   //used to call API after 300ms of entering filter value to avoid calling API on every chacter entering
   const debouncedGender = useDebounce(gender, 300);
@@ -40,22 +41,24 @@ function Users() {
   async function getAllUsers(rowNum, page) {
     let users = await getUsers(
       rowNum,
-      { gender, nationality: nationality.code }, //filter by
+      { gender, nationality: nationality?.code }, //filter by
       page
     );
     setUsers(users);
   }
 
   useEffect(() => {
-    if (debouncedGender || debouncedNationality.code) {
+    if (!firstRender.current) {
       getAllUsers();
     }
+    firstRender.current = false;
   }, [debouncedGender, debouncedNationality]);
 
   function handelFilter(type, val, newVal) {
     if (type === "gender") {
       setGender(newVal);
     } else {
+      console.log(type, val, newVal);
       //filter by nationality
       if (typeof newVal === "string") {
         setNationality({
@@ -81,7 +84,7 @@ function Users() {
                 freeSolo
                 id="free-solo-2-demo"
                 options={genders}
-                disableClearable
+                // disableClearable
                 style={{ zIndex: 0, width: "197.12px" }}
                 size={"small"}
                 value={gender}
@@ -103,10 +106,10 @@ function Users() {
                 freeSolo
                 id="free-solo-2-demo"
                 options={nationalities}
-                disableClearable
+                // disableClearable
                 style={{ zIndex: 0, width: "197.12px" }}
                 size={"small"}
-                value={nationality?.name}
+                // value={nationality.name}
                 getOptionLabel={(option) => option?.name || ""}
                 renderOption={(props, option) => (
                   <li {...props} key={option?.code}>

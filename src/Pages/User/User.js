@@ -21,6 +21,8 @@ function User() {
     handleOpenSlider(user[0]);
   }
 
+  console.log("11");
+
   useEffect(() => {
     let { state } = location;
     if (state && userId) {
